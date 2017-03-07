@@ -1,0 +1,58 @@
+{
+    "JobsCandidates": {
+        "namespace": "Jobs\\Candidates",
+        "controller": "CandidatesContoller"
+    },
+    "JobsCandidatesCategories": {
+        "namespace": "Jobs\\Candidates\\Categories",
+        "controller": "CategoriesController"
+    },
+    "JobsCandidatesEducation": {
+        "namespace": "Jobs\\Candidates\\Education",
+        "controller": "EducationController"
+    },
+    "JobsCandidatesExperiences": {
+        "namespace": "Jobs\\Candidates\\Experiences",
+        "controller": "ExperiencesController"
+    },
+    "JobsCandidatesMessages": {
+        "namespace": "Jobs\\Candidates\\Messages",
+        "controller": "MessagesController"
+    },
+    "JobsCandidatesSkills": {
+        "namespace": "Jobs\\Candidates\\Skills",
+        "controller": "SkillsController"
+    },
+    "JobsCategories": {
+        "namespace": "Jobs\\Categories",
+        "controller": "CategoriesController"
+    },
+    "JobsCertifications": {
+        "namespace": "Jobs\\Certifications",
+        "controller": "CertificationsController"
+    },
+    "JobsJobs": {
+        "namespace": "Jobs\\Jobs",
+        "controller": "JobsController"
+    },
+    "JobsJobsApplications": {
+        "namespace": "Jobs\\Jobs\\Applications",
+        "controller": "ApplicationsController"
+    },
+    "JobsPackages": {
+        "namespace": "Jobs\\Packages",
+        "controller": "PackagesController"
+    },
+    "JobsPackagesPrices": {
+        "namespace": "Jobs\\Packages\\Prices",
+        "controller": "PricesController"
+    },
+    "JobsSkills": {
+        "namespace": "Jobs\\Skills",
+        "controller": "SkillsController"
+    },
+    "JobsCandidatesDocuments": {
+        "namespace": "Jobs\\Candidates\\Documents",
+        "controller": "DocumentsController"
+    }
+}

@@ -1,0 +1,333 @@
+{
+    "frontend": [{
+            "title": "Candidate List",
+            "description": "Management of Candidates.",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "jobs.candidates",
+            "route": "jobs/candidates",
+            "arguments": "",
+            "keywords": "candidate, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Candidate ",
+            "description": "Add Candidate .",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::addAction",
+            "unique_name": "jobs.candidates.add",
+            "route": "jobs/candidates/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "candidate,add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"],
+                "MODERATOR": ["can_add"],
+                "USER": ["can_add"]
+            }
+        }, {
+            "title": "Edit Candidate {{ item.name }}",
+            "description": "Edit Candidate {{ item.name }}.",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::editAction",
+            "unique_name": "jobs.candidates.edit",
+            "route": "jobs/candidates/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }, {
+            "title": "Candidate Detail: {{ item.name }}",
+            "description": "Candidate Detail: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::detailAction",
+            "unique_name": "jobs.candidates.detail",
+            "route": "jobs/candidates/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Candidate Delete: {{ item.name }}",
+            "description": "Candidate Delete: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::deleteAction",
+            "unique_name": "jobs.candidates.delete",
+            "route": "jobs/candidates/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"],
+                "MODERATOR": ["can_deleteown"],
+                "USER": ["can_deleteown"]
+            }
+        }, {
+            "title": "Candidate Save: {{ item.name }}",
+            "description": "Candidate Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::saveAction",
+            "unique_name": "jobs.candidates.save",
+            "route": "jobs/candidates/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }, {
+            "title": "Candidate Save: {{ item.name }}",
+            "description": "Candidate Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::saveexperienceAction",
+            "unique_name": "jobs.candidates.saveexperience",
+            "route": "jobs/candidates/saveexperience",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, saveexperience, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }, {
+            "title": "Candidate Save: {{ item.name }}",
+            "description": "Candidate Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::saveeducationAction",
+            "unique_name": "jobs.candidates.saveeducation",
+            "route": "jobs/candidates/saveeducation",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, saveeducation, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }, {
+            "title": "Candidate Save: {{ item.name }}",
+            "description": "Candidate Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::deleteexperienceAction",
+            "unique_name": "jobs.candidates.deleteexperience",
+            "route": "jobs/candidates/deleteexperience",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, deleteexperience, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }, {
+            "title": "Candidate Save: {{ item.name }}",
+            "description": "Candidate Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::deleteeducationAction",
+            "unique_name": "jobs.candidates.deleteeducation",
+            "route": "jobs/candidates/deleteeducation",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, deleteeducation, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }, {
+            "title": "Candidate Analyzer",
+            "description": "Candidate Analyzer",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController::croncandidateanalyzerAction",
+            "unique_name": "jobs.candidates.croncandidateanalyzer",
+            "route": "jobs/candidates/croncandidateanalyzer",
+            "permissions": "can_view, can_viewown",
+            "arguments": {},
+            "keywords": "candidate, analyzer",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0
+        }]
+    ,
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\Admin\\CandidatesController::taskAction",
+            "unique_name": "admin.jobs.candidates.task",
+            "route": "admin/jobs/candidates/task",
+            "permissions": "can_write",
+            "arguments": "",
+            "keywords": "candidate, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_write"],
+                "ADMIN": ["can_write"]
+            }
+        }, {
+            "title": "Candidate List",
+            "description": "Management of Candidates.",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\Admin\\CandidatesController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.jobs.candidates",
+            "route": "admin/jobs/candidates",
+            "arguments": "",
+            "keywords": "candidate, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Candidate ",
+            "description": "Add Candidate .",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\Admin\\CandidatesController::addAction",
+            "unique_name": "admin.jobs.candidates.add",
+            "route": "admin/jobs/candidates/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "candidate, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"]
+            }
+        }, {
+            "title": "Edit Candidate {{ item.name }}",
+            "description": "Edit Candidate {{ item.name }}.",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\Admin\\CandidatesController::editAction",
+            "unique_name": "admin.jobs.candidates.edit",
+            "route": "admin/jobs/candidates/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Candidate Detail: {{ item.name }}",
+            "description": "Candidate Detail: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\Admin\\CandidatesController::detailAction",
+            "unique_name": "admin.jobs.candidates.detail",
+            "route": "admin/jobs/candidates/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Candidate Delete: {{ item.name }}",
+            "description": "Candidate Delete: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\Admin\\CandidatesController::deleteAction",
+            "unique_name": "admin.jobs.candidates.delete",
+            "route": "admin/jobs/candidates/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Candidate Save: {{ item.name }}",
+            "description": "Candidate Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Code\\Controllers\\Admin\\CandidatesController::saveAction",
+            "unique_name": "admin.jobs.candidates.save",
+            "route": "admin/jobs/candidates/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "candidate, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

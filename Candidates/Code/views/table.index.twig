@@ -1,0 +1,67 @@
+{# empty Twig template #}
+
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+<h1 class="component-header">Candidates</h1>
+
+<div class="candidate-list">
+    {%if items|length > 0 %}
+        {% for item in items %}
+
+            {% set item_url = generate_url('jobs.candidates.detail', {'id':item.id})  %}
+
+            <div class="col-sm-6 ">
+                <div class="table-responsive">
+
+                    <table class="table table-condensed table-bordered candidate">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <a href="{{ item_url }}" class="candidate-title" title="{{item.name}}">
+                                        {{ item.name|default('-') }}
+                                    </a>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="{{ item_url }}"title="{{ item.name }}">
+                                        <img src="{{ resized_image(item.image.file,90,90) }}" alt="{{ item.name }}" title="{{ item.name}}" width="90px" align="left">
+                                    </a>
+                                    <span>
+                                        <i class="fa fa-phone"></i> &nbsp; &nbsp; {{ item.phone|default('-') }}
+                                    </span><br>
+                                    <span>
+                                        <i class="fa fa-envelope"></i> &nbsp; &nbsp; {{ item.email|default('-') }}
+                                    </span><br>
+                                    <span>
+                                        <i class="fa fa-map-marker"></i> &nbsp; &nbsp; {{ item.country.name }} {{ item.location.name }} {{ item.city }}
+                                    </span><br>
+                                    <span>
+                                        <i class="fa fa-globe"></i> &nbsp; &nbsp; {{ item.website|default('-') }}
+                                    </span><br>
+                                    <span class="{% if not item.available %}bg-red{% else %}bg-green{% endif %}">
+                                        {% if not item.available %}Not{% endif %} Available
+                                    </span><br>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <a class="btn btn-primary btn-sm btn-flat" href="{{ item_url }}" title="View Profile">
+                                        View Profile
+                                    </a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+

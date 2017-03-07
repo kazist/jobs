@@ -1,0 +1,62 @@
+{# empty Twig template #}
+{% set params = { 'candidate_id': candidate_id} %}
+
+{{ set_assets('applications/Jobs/assets/js/job.js') }}
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+{% set educations = callFunction( "Jobs.Candidates.Code.Models.CandidatesModel", 'getEducations', params ) %}
+
+<a class="btn btn-primary btn-xs btn-flat pull-left add-education" data-toggle="modal" data-target="#educationModal">
+    <i class="fa fa-plus"></i> Add File
+</a>
+<br>
+<br>
+
+
+<div class="candidate-educations-form">
+
+    {% if educations|length > 0 %}
+        <div class="single-candidate-educations">
+            {% for education in educations %}
+                <div class="single-candidate-education">
+
+                    {% set education_url = generate_url('jobs.candidates.deleteeducation', {'education_id' : education.id , 'candidate_id': candidate_id}) %}
+
+                    <h3>{{ education.institution }}</h3>
+                    <div>
+                        <b> {{ education.start_date|date('d M Y') }} - {{ education.end_date|date('d M Y') }}</b>
+
+                        <a class="btn btn-primary btn-xs btn-flat edit-education" data-toggle="modal" data-target="#educationModal" title='Edit'>
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a class="btn btn-danger btn-xs btn-flat delete-education" href="{{ education_url }}" title='Delete'>
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>   
+
+                    <span class="educaction_id" education_data="{{ education.id }}"></span>
+                    <span class="institution" education_data="{{ education.institution }}"></span>
+                    <span class="certification_id" education_data="{{ education.certification_id }}"></span>
+                    <span class="field_of_study" education_data="{{ education.field_of_study }}"></span>
+                    <span class="grade" education_data="{{ education.grade }}"></span>
+                    <span class="activities" education_data="{{ education.activities }}"></span>
+                    <span class="description" education_data="{{ education.description }}"></span>
+                    <span class="start_date" education_data="{{ education.start_date }}"></span>
+                    <span class="end_date" education_data="{{ education.end_date }}"></span>
+
+                    <div>
+                        {{ education.description }}
+                    </div>
+
+                    <div>
+                        <b>Certification: </b>{{ education.certification_name }} <br>
+                        <b>Field of Study: </b>{{ education.field_of_study }}<br>
+                        <b>activities: </b>{{ education.activities }}<br>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <br>
+    <br>
+</div>

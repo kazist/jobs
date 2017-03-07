@@ -1,0 +1,74 @@
+{# empty Twig template #}
+{% import "form.macro.twig" as forms %}
+
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+<h1>{{ item.title }}</h1>
+
+<div class="job-posted-date">
+    <i class="fa fa-clock-o"></i> Posted:  {{ item.date_created|date('d M Y H:i') }} &nbsp;&nbsp;
+</div>
+
+{% set item_url = generate_url('jobs.jobs.detail', {'id':item.id})  %}
+{% set category_url = generate_url('jobs.categories.detail', {'id':item.id})  %}
+{% set apply_url = generate_url('jobs.jobs.applications.edit', {'job_id':item.id})  %}
+
+<br>
+<div>
+    {% if children|length > 0 %}
+        <div class="col-md-6">
+            <b> Sub-Categories</b><br>
+            {% if children|length > 0 %}
+                <div class="panel list-group">
+                    {% for child in children %}
+                        {% set child_url =generate_url('jobs.categories.detail', {'id':child.id})  %}
+                        <a href="{{ child_url }}" class="list-group-item" title=" {{ child.title }}">
+                            {{ child.title }}
+                        </a>
+                    {% endfor%}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="{% if children|length > 0 %}col-md-6{% endif %}">
+        <b> Description</b><br>
+        {{ item.description }}
+    </div>
+</div>
+
+<div> 
+    <div class="clearfix"></div>
+    <div class="well well-sm"> Job Listing From this Category</div>
+    <div class="category-jobs-listing">
+        {% include "job.list.twig" ignore missing with {'category_id': item.id, 'action': 'latest'}  %}
+    </div>
+    <div class="clearfix"></div>
+    <br>
+</div>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM7aNBTgvwJyUwTqkbwAYa8mC7gZRItPs"></script>   
+
+
+<script>
+    function initialize() {
+        var marker;
+        var mapCanvas = document.getElementById('map-canvas');
+        var myLatlng = new google.maps.LatLng({{ item.latitude|default('-1.2833300') }}, {{ item.longitude|default('36.8166700') }});
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 6,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+
+        marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map
+        });
+
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>

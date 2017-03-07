@@ -1,0 +1,108 @@
+{# empty Twig template #}
+
+{% set params = { 'category_id': category_id, 'action': action, 'offset': offset , 'limit': '3'} %}
+
+{{ set_assets('applications/Jobs/assets/js/job.js') }}
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+{% set items = callFunction( "Jobs.Jobs.Code.Models.JobsModel", 'getJobs', params ) %}
+{% set total = callFunction( "Jobs.Jobs.Code.Models.JobsModel", 'getTotalJobs', params ) %}
+
+
+<div class="jobs-list">
+    {% if items|length > 0 %}
+
+        {% for key,item in items %}
+
+            {% set item_url = generate_url('jobs.jobs.detail', {'id':item.id})  %}
+            {% set category_url = generate_url('jobs.categories.detail', {'id':item.id})  %}
+            {% set apply_url = generate_url('jobs.jobs.applications.edit', {'job_id':item.id})  %}
+
+            <div class="job">
+
+                <div class="job-title bg-gray">
+                    <a href="{{ item_url }}" title='{{ item.title }} '>
+                        {{ item.title }} 
+                    </a>
+                </div>
+
+                <div class="job-body">
+                    <div>
+                        <a class="btn btn-success btn-flat btn-sm pull-right apply-now" href="{{ apply_url }}" title='Apply Now'>Apply Now</a> 
+                        <a class="btn btn-primary btn-flat btn-sm pull-right" href="{{ item_url }}" title='View More'>View More</a> 
+                    </div>
+                    <div>
+
+                        <img src="{{ resized_image(item.image.file,48,48) }}" alt="{{ item.title }}" title="{{ item.title }}" width="60px" align="left">
+
+                        <b> Company:</b> {{ item.company|default('Company Not Set') }} <br>
+                        <b> Category:</b> <a href="{{ category_url }}" title='{{ item.category.name }}'>{{ item.category.name|default('Company Not Set') }}</a> <br>
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="job-application-date">
+                        <b>Job Application Date:</b> {{ item.opening_date|date('d M Y') }} <b>to</b> {{ item.closing_date|date('d M Y')  }}
+                    </div>
+
+                    <div class="clearfix"></div>
+                    {{ item.description|striptags|truncate(200)|raw }} 
+                    <div class="clearfix"></div>
+
+                    <div class="job-starting-date">
+                        <b>Work Starting Date:</b> {{ item.start_date|date('d M Y') }} <b>to</b> {{ item.end_date|date('d M Y')  }}
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="job-small-info">
+                        <span>
+                            <i class="fa fa-map-marker"></i> {{ item.country.name }} {{ item.city }} 
+                        </span>
+                        <span>
+                            <i class="fa fa-envelope"></i> {{ item.email }} 
+                        </span>
+                        <span>
+                            <i class="fa fa-location-arrow"></i> {{ item.address }} 
+                        </span>
+                        <span>
+                            <i class="fa fa-phone"></i> {{ item.phone }} 
+                        </span>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        {% endfor %}
+    {% else %}
+        No Records to List
+    {% endif %}
+</div>
+
+<div class="clearfix"></div>
+
+{% if total > 3 %}
+
+    <div class="jobs-navigation">
+
+        {% if offset %}
+            <div class="previous-jobs pull-left">
+                <a class="btn btn-default btn-sm btn-flat" offset="{{ offset|default('0') }}" action="previous" category_id="{{ category_id }}">
+                    <i class="fa fa-arrow-left"></i>
+                    Pre
+                </a>
+            </div>
+        {% endif %}
+
+        {% if (offset + 3) < total %}
+            <div class="next-jobs pull-right">
+                <a class="btn btn-default btn-sm btn-flat" offset="{{ offset|default('0')  }}" action="next" category_id="{{ category_id }}">
+                    <i class="fa fa-arrow-right"></i>
+                    Next 
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+{% endif %}

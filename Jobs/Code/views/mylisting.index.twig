@@ -1,0 +1,105 @@
+{# empty Twig template #}
+
+{{ set_assets('applications/Marketplace/assets/css/job.css') }}
+
+{% set params = {'view':'mylisting'} %}
+
+<form action="{{ generate_url('jobs.jobs', params) }}" method="POST">
+
+    <h1 class="component-header">My Listing</h1>
+    <a href="{{ generate_url('jobs.jobs.add')}}" class="btn btn-default pull-right">
+        <i class="fa fa-plus"></i>
+        Add An Job
+    </a>
+
+    <div class="clr"></div>
+    <br>
+
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th align="left">Image</th>
+                    <th align="left">Title/Category</th>
+                    <th>Package</th>
+                    <th>Paid</th>
+                    <th>Hits</th>
+                    <th>Published</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead> 
+            <tbody>
+                {% if items|length > 0 %}
+                    {% for key,item in items %}
+
+                        {% set item_url = generate_url('jobs.jobs.detail', null, 0, item) %}
+
+                        <tr>
+                            <td class="text-center">
+                                <a href="{{ item_url }}" title='{{ item.title }}'>
+                                    <img src="{{ resized_image(item.image_file, 100,50) }}" alt="{{ item.title }}"  title="{{ item.title }}">
+                                </a>
+                            </td>
+                            <td>
+                                {{ item.title }}<br>
+                                {{ item.category_id_title }}
+                            </td>
+                            <td>{{ item.package_id_title }}</td>
+                            <td><label>{% if item.payment_status %}Yes{% else %}No{% endif %}</label></td>
+                            <td>{{ item.hit }}</td>
+                            <td><label>{% if item.published %}Yes{% else %}No{% endif %}</label></td>
+                            <td>
+                                <a class="btn btn-default btn-xs" href="{{ generate_url('jobs.jobs.edit',{'id':item.id}) }}">
+                                    <i class="fa fa-pencil"></i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-default btn-xs" href="{{ generate_url('jobs.jobs.detail',{'id':item.id,'view':'payment'}) }}">
+                                    <i class="fa fa-pencil"></i>
+                                    Pay for job
+                                </a>
+                            </td>
+                        <tr>
+
+                        {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td class="text-center" colspan="10">
+                            <br>
+                            <h2> There are no Job listing added yet.</h2>
+                            <a href="{{ generate_url('jobs.jobs.add')}}" class="btn btn-default">
+                                <i class="fa fa-plus"></i>
+                                Add An Job
+                            </a>
+                            <br>
+                        </td>
+                    <tr>
+                    {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix"></div>
+
+    {% include "items.pagination.twig"%}
+
+    <div class="clearfix"></div>
+
+    {{ forms.input('_token' ) }} 
+
+</form>
+
+
+
+<style>
+    .vehicle{
+        border: 1px solid #EFEFEF;
+        margin-bottom:15px;
+        background:white;
+    }
+    .vehicle img{
+        border: 1px solid #EFEFEF;
+        margin:5px;
+    }
+</style>
+
+

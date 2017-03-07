@@ -1,0 +1,164 @@
+Jobs\Candidates\Code\Tables\Candidates:
+  table: jobs_candidates
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    user_id:
+      name: user_id
+      type: integer
+      length: 11
+      nullable: true
+    name:
+      name: name
+      type: string
+      length: 255
+      nullable: false
+    dob:
+      name: dob
+      type: date
+      nullable: true
+    education:
+      name: education
+      type: integer
+      length: 11
+      nullable: true
+    resume:
+      name: resume
+      type: integer
+      length: 11
+      nullable: true
+    available:
+      name: available
+      type: integer
+      length: 11
+      nullable: true
+    avatar:
+      name: avatar
+      type: integer
+      length: 11
+      nullable: true
+    phone:
+      name: phone
+      type: string
+      length: 255
+      nullable: true
+    email:
+      name: email
+      type: string
+      length: 255
+      nullable: true
+    website:
+      name: website
+      type: string
+      length: 255
+      nullable: false
+    country_id:
+      name: country_id
+      type: integer
+      length: 11
+      nullable: true
+    location_id:
+      name: location_id
+      type: integer
+      length: 11
+      nullable: true
+    city:
+      name: city
+      type: string
+      length: 255
+      nullable: true
+    profile:
+      name: profile
+      type: text
+      nullable: true
+    position:
+      name: position
+      type: string
+      length: 255
+      nullable: true
+    other_info:
+      name: other_info
+      type: text
+      nullable: true
+    package_id:
+      name: package_id
+      type: integer
+      length: 11
+      nullable: true
+    package_price_id:
+      name: package_price_id
+      type: integer
+      length: 11
+      nullable: true
+    payment_amount:
+      name: payment_amount
+      type: integer
+      length: 11
+      nullable: true
+    payment_stage:
+      name: payment_stage
+      type: string
+      length: 255
+      nullable: true
+    payment_status:
+      name: payment_status
+      type: integer
+      length: 11
+      nullable: true
+    payment_date:
+      name: payment_date
+      type: datetime
+      nullable: true
+    payment_expiry:
+      name: payment_expiry
+      type: datetime
+      nullable: true
+    featured:
+      name: featured
+      type: integer
+      length: 11
+      nullable: true
+    published:
+      name: published
+      type: integer
+      length: 11
+      nullable: true
+    created_by:
+      name: created_by
+      type: integer
+      length: 11
+      nullable: false
+    date_created:
+      name: date_created
+      type: datetime
+      nullable: false
+    modified_by:
+      name: modified_by
+      type: integer
+      length: 11
+      nullable: false
+    date_modified:
+      name: date_modified
+      type: datetime
+      nullable: false
+  indexes:
+    user_id_index:
+      columns: [user_id]
+    country_id_index:
+      columns: [country_id]
+    location_id_index:
+      columns: [location_id]
+    created_by_index:
+      columns: [created_by]
+    modified_by_index:
+      columns: [modified_by]
+  lifecycleCallbacks:
+    prePersist:
+      - onPrePersist
+      - onPrePersistCallbacks
+    preUpdate:
+      - onPreUpdate
+      - onPreUpdateCallbacks

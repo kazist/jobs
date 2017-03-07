@@ -1,0 +1,350 @@
+<?php
+
+namespace Jobs\Candidates\Education\Code\Tables;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Education
+ *
+ * @ORM\Table(name="jobs_candidates_education", indexes={@ORM\Index(name="candidate_id_index", columns={"candidate_id"}), @ORM\Index(name="certification_id_index", columns={"certification_id"}), @ORM\Index(name="created_by_index", columns={"created_by"}), @ORM\Index(name="modified_by_index", columns={"modified_by"})})
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ */
+class Education extends \Kazist\Table\BaseTable {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="institution", type="string", length=255, nullable=false)
+     */
+    protected $institution;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="candidate_id", type="integer", length=11, nullable=false)
+     */
+    protected $candidate_id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="certification_id", type="integer", length=11, nullable=true)
+     */
+    protected $certification_id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field_of_study", type="string", length=255, nullable=true)
+     */
+    protected $field_of_study;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="grade", type="string", length=255, nullable=true)
+     */
+    protected $grade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    protected $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="activities", type="text", nullable=true)
+     */
+    protected $activities;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date", type="datetime", nullable=true)
+     */
+    protected $start_date;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="datetime", nullable=true)
+     */
+    protected $end_date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="created_by", type="integer", length=11, nullable=false)
+     */
+    protected $created_by;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_created", type="datetime", nullable=false)
+     */
+    protected $date_created;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="modified_by", type="integer", length=11, nullable=false)
+     */
+    protected $modified_by;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_modified", type="datetime", nullable=false)
+     */
+    protected $date_modified;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Set institution
+     *
+     * @param string $institution
+     * @return Education
+     */
+    public function setInstitution($institution) {
+        $this->institution = $institution;
+
+        return $this;
+    }
+
+    /**
+     * Get institution
+     *
+     * @return string 
+     */
+    public function getInstitution() {
+        return $this->institution;
+    }
+
+    /**
+     * Set candidate_id
+     *
+     * @param integer $candidateId
+     * @return Education
+     */
+    public function setCandidateId($candidateId) {
+        $this->candidate_id = $candidateId;
+
+        return $this;
+    }
+
+    /**
+     * Get candidate_id
+     *
+     * @return integer 
+     */
+    public function getCandidateId() {
+        return $this->candidate_id;
+    }
+
+    /**
+     * Set certification_id
+     *
+     * @param integer $certificationId
+     * @return Education
+     */
+    public function setCertificationId($certificationId) {
+        $this->certification_id = $certificationId;
+
+        return $this;
+    }
+
+    /**
+     * Get certification_id
+     *
+     * @return integer 
+     */
+    public function getCertificationId() {
+        return $this->certification_id;
+    }
+
+    /**
+     * Set field_of_study
+     *
+     * @param string $fieldOfStudy
+     * @return Education
+     */
+    public function setFieldOfStudy($fieldOfStudy) {
+        $this->field_of_study = $fieldOfStudy;
+
+        return $this;
+    }
+
+    /**
+     * Get field_of_study
+     *
+     * @return string 
+     */
+    public function getFieldOfStudy() {
+        return $this->field_of_study;
+    }
+
+    /**
+     * Set grade
+     *
+     * @param string $grade
+     * @return Education
+     */
+    public function setGrade($grade) {
+        $this->grade = $grade;
+
+        return $this;
+    }
+
+    /**
+     * Get grade
+     *
+     * @return string 
+     */
+    public function getGrade() {
+        return $this->grade;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Education
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     * Set activities
+     *
+     * @param string $activities
+     * @return Education
+     */
+    public function setActivities($activities) {
+        $this->activities = $activities;
+
+        return $this;
+    }
+
+    /**
+     * Get activities
+     *
+     * @return string 
+     */
+    public function getActivities() {
+        return $this->activities;
+    }
+
+    /**
+     * Set start_date
+     *
+     * @param \DateTime $startDate
+     * @return Education
+     */
+    public function setStartDate($startDate) {
+        $this->start_date = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get start_date
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate() {
+        return $this->start_date;
+    }
+
+    /**
+     * Set end_date
+     *
+     * @param \DateTime $endDate
+     * @return Education
+     */
+    public function setEndDate($endDate) {
+        $this->end_date = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get end_date
+     *
+     * @return \DateTime 
+     */
+    public function getEndDate() {
+        return $this->end_date;
+    }
+
+    /**
+     * Get created_by
+     *
+     * @return integer 
+     */
+    public function getCreatedBy() {
+        return $this->created_by;
+    }
+
+    /**
+     * Get date_created
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated() {
+        return $this->date_created;
+    }
+
+    /**
+     * Get modified_by
+     *
+     * @return integer 
+     */
+    public function getModifiedBy() {
+        return $this->modified_by;
+    }
+
+    /**
+     * Get date_modified
+     *
+     * @return \DateTime 
+     */
+    public function getDateModified() {
+        return $this->date_modified;
+    }
+
+}

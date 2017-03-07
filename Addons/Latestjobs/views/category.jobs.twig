@@ -1,0 +1,32 @@
+<div>
+    <div class="jobs-list">
+        {% if jobs|length > 0 %}
+            {% for job in jobs %}
+                <div class="col-md-6">
+                    <div class="job">
+
+                        {% set job_url = generate_url('jobs.jobs.detail', {'id': job.id}) %}
+                        {% set category_url = generate_url('jobs.jobs', {'category_id':job.category_id})  %}
+                        {% set apply_url = generate_url('jobs.jobs.applications.edit', {'job_id': job.id}) %}
+
+                        <a href="{{ job_url }}" title="{{ job.title }}">
+                            <img src="{{ resized_image(job.job_image, 48, 48) }}" alt="{{ job.title }}" title="{{ job.title }}" width="60px" align="left">
+                        </a>
+
+                        <a href="{{ job_url }}" title="{{ job.title }}">
+                            {{ job.title|truncate(30) }}
+                        </a>
+                        <br>
+                        <b> Company:</b> {{ job.company.name|default('Company Not Set') }} <br>
+                        <b> Category:</b> <a href="{{ category_url }}" title="{{ job.category_title }}">{{ job.category_title|default('Company Not Set') }}</a> <br>
+                        <b>Job Date:</b> {{ (job.opening_date ? job.opening_date|date('d M Y'))|default(' - ') }} <b>to</b> {{ (job.closing_date ? job.closing_date|date('d M Y'))|default(' - ')  }}<br>
+
+                        <a class="btn btn-success btn-flat btn-xs apply-now" href="{{ apply_url }}" title="Apply Now">Apply Now</a> 
+                        <a class="btn btn-primary btn-flat btn-xs" href="{{ job_url }}" title="View More">View More</a> 
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

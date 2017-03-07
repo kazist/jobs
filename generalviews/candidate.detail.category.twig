@@ -1,0 +1,16 @@
+{# empty Twig template #}
+
+{% set params = { 'candidate_id': candidate_id} %}
+
+{{ set_assets('applications/Jobs/assets/js/job.js') }}
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+{% set skills = callFunction( "Jobs.Candidates.Code.Models.CandidatesModel", 'getSkills', params ) %}
+
+{% if skills|length > 0 %}
+    {% for skill in skills %}
+        {{ skill.skill }},
+    {% endfor %}
+{% endif %}
+<br>
+<br>

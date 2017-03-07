@@ -1,0 +1,69 @@
+
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+{{ set_assets('applications/Jobs/Addons/Latestjobs/assets/js/latestjobs.js') }}
+
+{% if show_categories %}
+    <div class="latest_jobs_block latest_contents_block">
+
+        <div>
+            <div class="col-sm-3 latest_grey_nav">
+                <!-- Nav tabs -->
+                <ul class="nav nav-pills nav-stacked" role="tablist">
+                    <li role="presentation" class="active"><a href="#job-category-0" aria-controls="job-category-0" role="tab" data-toggle="tab" category_id="" title='All Jobs'>All Jobs</a></li>
+                        {% if categories|length>0 %}
+                            {% for key,category in categories %}
+                            <li role="presentation"><a href="#job-category-{{ category.id}}" aria-controls="job-category-{{ category.id }}" role="tab" data-toggle="tab" category_id="{{ category.id}}" title='{{ category.title }}'>{{ category.title }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                </ul>
+
+                <a class="btn btn-primary btn-xs btn-flat col-sm-12" href="{{ generate_url('jobs.jobs') }}" title='In All Categories'> In All Categories</a>
+                <br>
+                <br>
+            </div>
+            <div class="col-sm-9">
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                    <div role="tabpanel" class="tab-pane active" id="job-category-0">
+
+                        <h4>
+                            <a href="{{ generate_url('jobs.jobs') }}" title='All Jobs'>
+                                All Jobs
+                            </a>
+                        </h4>
+
+                        <div class="category-jobs">
+                            {% include 'category.jobs.twig' ignore missing with { jobs:jobs } %}
+                        </div>
+
+                    </div>
+
+
+                    {% if categories|length>0 %}
+                        {% for key,category in categories %}
+                            <div role="tabpanel" class="tab-pane" id="job-category-{{ category.id}}">
+
+                                <h4>
+                                    <a href="{{ generate_url('jobs.jobs', {'category_id': category.id}) }}" title='{{ category.title }}'>
+                                        {{ category.title }}
+                                    </a>
+                                </h4>
+
+                                <div class="category-jobs">
+                                </div>
+
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+{% else %}
+    {% include 'category.jobs.twig' ignore missing with { jobs:jobs } %}
+    <div class="clearfix"></div>
+{% endif %}

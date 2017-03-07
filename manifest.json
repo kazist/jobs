@@ -1,0 +1,9 @@
+{
+    "name": "Jobs",
+    "title": "Jobs Listing",
+    "icon": "icons\/jobs.png",
+    "extension": "component",
+    "path": "jobs\/",
+    "description": "Jobs Listing",
+    "version": 1
+}

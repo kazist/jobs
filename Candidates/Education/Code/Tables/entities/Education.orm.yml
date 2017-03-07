@@ -1,0 +1,83 @@
+Jobs\Candidates\Education\Code\Tables\Education:
+  table: jobs_candidates_education
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    institution:
+      name: institution
+      type: string
+      length: 255
+      nullable: false
+    candidate_id:
+      name: candidate_id
+      type: integer
+      length: 11
+      nullable: false
+    certification_id:
+      name: certification_id
+      type: integer
+      length: 11
+      nullable: true
+    field_of_study:
+      name: field_of_study
+      type: string
+      length: 255
+      nullable: true
+    grade:
+      name: grade
+      type: string
+      length: 255
+      nullable: true
+    description:
+      name: description
+      type: text
+      nullable: true
+    activities:
+      name: activities
+      type: text
+      nullable: true
+    start_date:
+      name: start_date
+      type: datetime
+      nullable: true
+    end_date:
+      name: end_date
+      type: datetime
+      nullable: true
+    created_by:
+      name: created_by
+      type: integer
+      length: 11
+      nullable: false
+    date_created:
+      name: date_created
+      type: datetime
+      nullable: false
+    modified_by:
+      name: modified_by
+      type: integer
+      length: 11
+      nullable: false
+    date_modified:
+      name: date_modified
+      type: datetime
+      nullable: false
+  indexes:
+    candidate_id_index:
+      columns: [candidate_id]
+    certification_id_index:
+      columns: [certification_id]
+    created_by_index:
+      columns: [created_by]
+    modified_by_index:
+      columns: [modified_by]
+  lifecycleCallbacks:
+    prePersist:
+      - onPrePersist
+      - onPrePersistCallbacks
+    preUpdate:
+      - onPreUpdate
+      - onPreUpdateCallbacks

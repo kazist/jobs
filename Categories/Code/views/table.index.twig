@@ -1,0 +1,39 @@
+{# empty Twig template #}
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+{% set opening_div = '<div class="col-sm-6 ">' %}
+{% set closing_div = '</div>' %}
+
+<div class="category-list">
+    <div class="col-sm-6 ">
+        {% if categories|length > 0 %}
+            {% for key, category in categories%}
+
+                {% set parent_url = generate_url('jobs.categories.detail', {'id':category.id})  %}
+
+                {% if categories|length / 2  == key  %}
+                    {{ closing_div|raw }}
+                    {{ opening_div|raw }}
+                {% endif %}
+
+                <ul class="parent-category-item">
+                    <a href="{{ parent_url }}" title='{{ category.title }}'>{{ category.title|capitalize }} ( {{ category.total_jobs|number_format() }} )</a>
+                    {% if category.children|length > 0 %}
+                        <ul class="child-category-item">
+                            {% for child in category.children %} 
+                                {% set child_url = generate_url('jobs.categories.detail', {'id':child.id})  %}
+                                <li>
+                                    <a href="{{ child_url }}" title='{{ child.title }}'>
+                                        {{ child.title|capitalize }} ( {{ child.total_jobs|number_format()  }} )
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </ul>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+

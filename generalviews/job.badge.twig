@@ -1,0 +1,63 @@
+{# empty Twig template #}
+{% set params = { 'job_id': job_id} %}
+
+{{ set_assets('applications/Jobs/assets/js/job.js') }}
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+{% set item = callFunction( "Jobs.Jobs.Code.Models.JobsModel", 'getJob', params ) %}
+
+<div class="jobs-list">
+
+    {% set item_url = generate_url('jobs.jobs.detail', {'id':item.id})  %}
+    {% set category_url = generate_url('jobs.categories.detail', {'id':item.id}) %}
+    {% set apply_url = generate_url('jobs.jobs.applications.edit&job_id='~ item.id})  %}
+
+    <div class="job">
+
+        <div class="job-title bg-gray">
+            <a href="{{ item_url }}" title=" {{ item.title }} ">
+                {{ item.title }} 
+            </a>
+        </div>
+
+        <div class="job-body">
+
+            <div>
+                <img src="{{ resized_image(item.image.file,48,48) }}" alt="{{ item.title }}" title="{{ item.title }}" width="60px" align="left">
+
+                <b> Company:</b> {{ item.company|default('Company Not Set') }} <br>
+                <b> Category:</b> <a href="{{ category_url }}" title="{{ item.category.name }}">{{ item.category.name|default('Company Not Set') }}</a> <br>
+
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="job-application-date">
+                <b>Job Application Date:</b> {{ item.opening_date|date('d M Y') }} <b>to</b> {{ item.closing_date|date('d M Y')  }}
+            </div>
+
+            <div class="clearfix"></div>
+            {{ item.description|striptags|truncate(200)|raw }} 
+            <div class="clearfix"></div>
+
+            <div class="job-starting-date">
+                <b>Work Starting Date:</b> {{ item.start_date|date('d M Y') }} <b>to</b> {{ item.end_date|date('d M Y')  }}
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="job-small-info">
+                <span>
+                    <i class="fa fa-map-marker"></i> {{ item.country.name }} {{ item.city }} 
+                </span>
+                <span>
+                    <i class="fa fa-envelope"></i> {{ item.email }} 
+                </span>
+                <span>
+                    <i class="fa fa-location-arrow"></i> {{ item.address }} 
+                </span>
+                <span>
+                    <i class="fa fa-phone"></i> {{ item.phone }} 
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

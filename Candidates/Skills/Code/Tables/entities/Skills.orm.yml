@@ -1,0 +1,52 @@
+Jobs\Candidates\Skills\Code\Tables\Skills:
+  table: jobs_candidates_skills
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    candidate_id:
+      name: candidate_id
+      type: integer
+      length: 11
+      nullable: false
+    skill_id:
+      name: skill_id
+      type: integer
+      length: 11
+      nullable: false
+    created_by:
+      name: created_by
+      type: integer
+      length: 11
+      nullable: false
+    date_created:
+      name: date_created
+      type: datetime
+      nullable: false
+    modified_by:
+      name: modified_by
+      type: integer
+      length: 11
+      nullable: false
+    date_modified:
+      name: date_modified
+      type: datetime
+      nullable: false
+  indexes:
+    candidate_id_index:
+      columns: [candidate_id]
+    skill_id_index:
+      columns: [skill_id]
+    created_by_index:
+      columns: [created_by]
+    modified_by_index:
+      columns: [modified_by]
+  lifecycleCallbacks:
+    prePersist:
+      - onPrePersist
+      - onPrePersistCallbacks
+    preUpdate:
+      - onPreUpdate
+      - onPreUpdateCallbacks

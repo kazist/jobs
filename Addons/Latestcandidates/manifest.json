@@ -1,0 +1,10 @@
+{
+    "name": "latestcandidates",
+    "title": "Latestcandidates Listing",
+    "explanation": "Latestcandidates Listing",
+    "description": "Latestcandidates Listing",
+    "version": 1,
+    "icon": "assets\/jobs\/addons\/latestcandidates\/icon.png",
+    "extension": "addon",
+    "path": "jobs\/addons\/latestcandidates\/"
+}

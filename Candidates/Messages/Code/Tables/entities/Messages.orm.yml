@@ -1,0 +1,59 @@
+Jobs\Candidates\Messages\Code\Tables\Messages:
+  table: jobs_candidates_messages
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    candidate_id:
+      name: candidate_id
+      type: integer
+      length: 11
+      nullable: false
+    subject:
+      name: subject
+      type: string
+      length: 255
+      nullable: false
+    message:
+      name: message
+      type: text
+      nullable: false
+    email:
+      name: email
+      type: string
+      length: 255
+      nullable: false
+    created_by:
+      name: created_by
+      type: integer
+      length: 11
+      nullable: false
+    date_created:
+      name: date_created
+      type: datetime
+      nullable: false
+    modified_by:
+      name: modified_by
+      type: integer
+      length: 11
+      nullable: false
+    date_modified:
+      name: date_modified
+      type: datetime
+      nullable: false
+  indexes:
+    candidate_id_index:
+      columns: [candidate_id]
+    created_by_index:
+      columns: [created_by]
+    modified_by_index:
+      columns: [modified_by]
+  lifecycleCallbacks:
+    prePersist:
+      - onPrePersist
+      - onPrePersistCallbacks
+    preUpdate:
+      - onPreUpdate
+      - onPreUpdateCallbacks

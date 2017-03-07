@@ -1,0 +1,22 @@
+{
+    "frontend": [{
+            "title": "Candidates List",
+            "description": "Management of Candidates.",
+            "controller": "Jobs\\Addons\\Candidates\\Controllers\\CandidatesController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "jobs.addons.candidates",
+            "route": "jobs/addons/candidates",
+            "arguments": "",
+            "keywords": "latest, candidates, list, addons",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }]
+
+} 	

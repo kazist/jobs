@@ -1,0 +1,41 @@
+{# empty Twig template #}
+
+{% set params = { 'candidate_id': candidate_id} %}
+
+{{ set_assets('applications/Jobs/assets/js/job.js') }}
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+{% set categories = callFunction( "Jobs.Candidates.Code.Models.CandidatesModel", 'getCategoriesInput', params ) %}
+
+{% set opening_div = '<div class="col-sm-6 ">' %}
+{% set closing_div = '</div>' %}
+
+<div>
+    <div class="col-sm-6 ">
+        {% if categories|length > 0 %}
+            {% for key, category in categories %}
+
+                {% if categories|length / 2  == key  %}
+                    {{ closing_div|raw }}
+                    {{ opening_div|raw }}
+                {% endif %}
+
+                <b>{{ category.title }}</b><br>
+
+                {% if category.children|length > 0 %}
+                    {% for child in category.children %}
+                        <ul>
+                            <li>
+                                <input name="form[category][]" type="checkbox" value="{{ child.id }}" {% if child.is_selected %}checked{% endif %}>{{ child.title }}  
+                            </li>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<br>
+<br>

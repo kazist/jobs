@@ -1,0 +1,48 @@
+{# empty Twig template #}
+<div id="experienceModal" class="candidate-experience-form modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="main-edit-form" action="{{ generate_url('jobs.candidates.saveexperience') }}" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add/Edit Experience</h4>
+                </div>
+                <div class="modal-body">
+
+
+
+                    {{ forms.input('experience.id', 'hidden', null, 'Id') }}
+                    {{ forms.input('experience.candidate_id', 'hidden', item.id) }}
+                    {{ forms.input('experience.title', 'text', null, 'Title') }}
+                    {{ forms.input('experience.description', 'textarea', null, 'Description') }}
+                    {{ forms.input('experience.company', 'text', null, 'Company') }}
+                    {{ forms.input('experience.location', 'text', null, 'Location') }}
+                    {{ forms.input('experience.position', 'text', null, 'Position') }}
+
+                    <div class="form-group institution-group">
+                        <label for="institution" class="col-sm-3 control-label">Start/End Date</label>
+                        <div class="col-sm-9 kazicode-form-field">
+                            <div class="job-publish-up">
+                                {{ forms.input('experience.start_date', 'date',  null) }}
+                            </div>
+                            <div class="job-publish-connector">
+                                To
+                            </div>
+                            <div class="job-publish-down">
+                                {{ forms.input('experience.end_date', 'date',  null) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-success btn-sm btn-flat" type="submit" value="Save Changes" >
+
+                    <button  class="btn btn-danger btn-sm btn-flat" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+                {{ forms.input('_token' ) }} 
+
+            </form>
+        </div>
+    </div>
+</div>        

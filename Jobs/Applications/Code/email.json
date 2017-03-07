@@ -1,0 +1,15 @@
+{
+    "layouts": [{
+            "tracking_id": "1",
+            "unique_name": "jobs.jobs.applications.sendmessage",
+            "subject": "Job Application Message : {{ message.subject }}",
+            "sms": "Job Application Message : {{ message.subject }}",
+            "body": "<p>Hi {{user.name}},<\/p>\r\n<p>You have a new Job Application For On You Job Post.<\/p>\r\n<p>&nbsp;<\/p>\r\n<p><strong>Message:<\/strong> {{message.message}}<\/p>\r\n<p><strong>Email:<\/strong> {{message.email}}<\/p>\r\n<p><strong>Phone:<\/strong> {{message.phone}}<\/p>\r\n<p>&nbsp;<\/p>\r\n<p>To View your job post click link below.<\/p>\r\n<p><a href=\"{{job.url}}\">{{job.title}}<\/a><\/p>"
+        }, {
+            "tracking_id": "2",
+            "unique_name": "jobs.jobs.applications.sendmessage.thankyou",
+            "subject": "Job Application sent Successful : {{ message.subject }}",
+            "sms": "Job Application sent Successful : {{ message.subject }}",
+            "body": "<p>Hi {{message.name}},<\/p>\r\n<p>Your&nbsp;message was sent Successfully.&nbsp;<\/p>\r\n<p><strong>Message:<\/strong> {{message.message}}<\/p>\r\n<p><strong>Email:<\/strong> {{message.email}}<\/p>\r\n<p><strong>Phone:<\/strong> {{message.phone}}<\/p>\r\n<p>To View this&nbsp;job click link below.<\/p>\r\n<p><a href=\"{{job.url}}\">{{job.title}}<\/a><\/p>"
+        }]
+}

@@ -1,0 +1,34 @@
+
+{{ set_assets('applications/Jobs/Addons/Candidates/assets/css/style.css') }}
+
+<div class="job-candidate">
+    <ul class="kazi-candidates">
+
+        {% if candidates|length > 0 %}
+            {% for candidate in candidates %}
+
+                {% set candidate_url = generate_url('jobs.candidates.detail', {'id': candidate.id})  %}
+                {% set user_url = generate_url('social.members.detail', {'id': candidate.created_by})  %}
+
+                <li class="clearfix">
+                    <img src="{{ candidate.avatar_image }}" class="avatar" alt="{{ candidate.name }}" title="{{ candidate.name }}" width="30px">
+                    <div class="candidates-content">
+                        <div>
+                            <a href="{{ candidate_url }}" title="{{ candidate.name }}">
+                                <b>
+                                    {{ candidate.name }}
+                                </b>
+                            </a>
+                            <br>
+                            <div class="meta"><i class="fa fa-file"></i> Location: {{ candidate.country_id_join }} {{ candidate.city }}</div>
+                            <div class="meta"><i class="fa fa-file"></i> Position: {{ candidate.position }}</div>
+                            <div class="meta"><i class="fa fa-file"></i> Available: {% if candidate.available %}Yes{% else %}No{% endif %}</div>
+                        </div>
+                    </div>
+                </li>
+
+            {% endfor %}
+        {% endif %}
+
+    </ul>
+</div>

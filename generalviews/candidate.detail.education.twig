@@ -1,0 +1,34 @@
+{# empty Twig template #}
+
+{% set params = { 'candidate_id': candidate_id} %}
+
+{{ set_assets('applications/Jobs/assets/js/job.js') }}
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+{% set educations = callFunction( "Jobs.Candidates.Code.Models.CandidatesModel", 'getEducations', params ) %}
+
+{% if educations|length > 0 %}
+    <div class="single-candidate-educations">
+        {% for education in educations %}
+            <div class="single-candidate-education">
+                <h3>{{ education.institution }}</h3>
+
+                <div>
+                    <b> {{ education.start_date|date('d M Y') }} - {{ education.end_date|date('d M Y') }}</b>
+                </div>   
+
+                <div>
+                    {{ education.description }}
+                </div>
+
+                <div>
+                    <b>Certification: </b>{{ education.certification_name }} <br>
+                    <b>Field of Study: </b>{{ education.field_of_study }}<br>
+                    <b>activities: </b>{{ education.activities }}<br>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<br>
+<br>

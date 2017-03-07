@@ -1,0 +1,123 @@
+{
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Jobs\\Skills\\Code\\Controllers\\Admin\\SkillsController::taskAction",
+            "unique_name": "admin.jobs.skills.task",
+            "route": "admin/jobs/skills/task",
+            "permissions": "can_write",
+            "arguments": "",
+            "keywords": "skills, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_write"],
+                "ADMIN": ["can_write"]
+            }
+        }, {
+            "title": "Skill List",
+            "description": "Management of Skills.",
+            "controller": "Jobs\\Skills\\Code\\Controllers\\Admin\\SkillsController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.jobs.skills",
+            "route": "admin/jobs/skills",
+            "arguments": "",
+            "keywords": "skill, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Skill  ",
+            "description": "Add Skill  .",
+            "controller": "Jobs\\Skills\\Code\\Controllers\\Admin\\SkillsController::addAction",
+            "unique_name": "admin.jobs.skills.add",
+            "route": "admin/jobs/skills/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "skill,add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"]
+            }
+        }, {
+            "title": "Edit Skill {{ item.name }}",
+            "description": "Edit Skill {{ item.name }}.",
+            "controller": "Jobs\\Skills\\Code\\Controllers\\Admin\\SkillsController::editAction",
+            "unique_name": "admin.jobs.skills.edit",
+            "route": "admin/jobs/skills/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "skill, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Skill Detail: {{ item.name }}",
+            "description": "Skill Detail: {{ item.name }}",
+            "controller": "Jobs\\Skills\\Code\\Controllers\\Admin\\SkillsController::detailAction",
+            "unique_name": "admin.jobs.skills.detail",
+            "route": "admin/jobs/skills/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "skill, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Skill Delete: {{ item.name }}",
+            "description": "Skill Delete: {{ item.name }}",
+            "controller": "Jobs\\Skills\\Code\\Controllers\\Admin\\SkillsController::deleteAction",
+            "unique_name": "admin.jobs.skills.delete",
+            "route": "admin/jobs/skills/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "skill, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Skill Save: {{ item.name }}",
+            "description": "Skill Save: {{ item.name }}",
+            "controller": "Jobs\\Skills\\Code\\Controllers\\Admin\\SkillsController::saveAction",
+            "unique_name": "admin.jobs.skills.save",
+            "route": "admin/jobs/skills/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "skill, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

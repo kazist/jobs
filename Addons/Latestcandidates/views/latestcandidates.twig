@@ -1,0 +1,37 @@
+
+{{ set_assets('applications/Jobs/Addons/Latestcandidates/assets/css/style.css') }}
+
+{% set limit = 4 %}
+
+<div class="stylish-panel">
+    {% if jobcandidates|length > 0 %}
+        {% for key,candidate in jobcandidates %}
+
+            {% set candidate_url = generate_url('jobs.candidates.detail', {'id': candidate.id})  %}
+            {% set user_url = generate_url('social.members.detail', {'id': candidate.created_by})  %}
+
+            <div class="col-md-{{ (12/limit)|round(0, 'floor')  }} latestcandidate-single">
+                <div>
+                    <a href="{{ candidate_url }}" title="{{ candidate.name }}">
+                        <img src="{{ resized_image(candidate.avatar_image,150,150) }}" alt="{{ candidate.name }}" title="{{ candidate.name }}" class="img-thumbnail">
+                    </a>
+                    <b><i class="fa fa-user"></i></b> <a href="{{ user_url }}" title="{{ candidate.name}}">{{ candidate.name|truncate(20) }}</a><br>
+                    <b><i class="fa fa-map-marker"></i></b> {{ candidate.country_name }}<br>
+                    <b><i class="fa fa-clock-o"></i></b> {{ candidate.date_created|date('d M Y H:i') }}<br>
+                    <a href="{{ candidate_url }}" class="btn btn-success btn-xs btn-flat" title="{{ candidate.name }}">View Detail »</a>
+                </div>
+            </div>
+
+            {% if not ((key+1) % limit) %}
+
+                {{ '<div class="clearfix"></div>' }}
+                {{ '</div>' }}
+                {{ '<div class="row stylish-panel">' }}
+
+            {% endif %}
+
+        {% endfor %}
+    {% endif %}
+    <div class="clearfix"></div>
+</div>
+

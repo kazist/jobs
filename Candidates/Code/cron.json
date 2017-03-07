@@ -1,0 +1,19 @@
+[{
+        "tracking_id": "1",
+        "controller": "Jobs\\Candidates\\Code\\Controllers\\CandidatesController",
+        "function": "croncandidateanalyzerAction",
+        "unique_name": "jobs.candidates.croncandidateanalyzer",
+        "minute": "0",
+        "hour": "*",
+        "day_of_month": "*",
+        "month": "*",
+        "day_of_week": "*",
+        "year": "*",
+        "next_run_time": "",
+        "published": 0
+    }]
+
+
+
+
+

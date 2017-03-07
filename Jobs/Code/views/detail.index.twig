@@ -1,0 +1,114 @@
+{# empty Twig template #}
+{% import "form.macro.twig" as forms %}
+
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+<h1 class="component-header">{{ item.title }}</h1>
+
+<div class="job-posted-date">
+    <i class="fa fa-clock-o"></i> Posted:  {{ item.date_created|date('d M Y H:i') }} &nbsp;&nbsp;
+</div>
+
+{% if view == 'payment' %} 
+    {% include "payment.index.twig" ignore missing %} 
+{% endif %}
+
+<div>
+    {% set item_url = generate_url('jobs.jobs.detail', {'id':item.id})  %}
+    {% set category_url = generate_url('jobs.categories.detail', {'id':item.id}) %}
+    {% set apply_url = generate_url('jobs.jobs.applications.edit', {'job_id':item.id})  %}
+
+    <div class="job">
+
+        <div class="job-body">
+
+            <div>
+                <a class="btn btn-success btn-flat btn-sm pull-right apply-now" href="{{ apply_url }}" title="Apply Now">Apply Now</a> 
+            </div>
+
+            <div>
+                <img src="{{ resized_image(item.image_file,48,48) }}" alt="{{ item.title }}" title="{{ item.title }}" width="60px" align="left">
+
+                <b> Company:</b> {{ item.company|default('Company Not Set') }} <br>
+                <b> Category:</b> <a href="{{ category_url }}"title="{{ item.category.name|default('Company Not Set') }}">{{ item.category.name|default('Company Not Set') }}</a> <br>
+
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="job-application-date">
+                <b>Job Application Date:</b> {{ item.opening_date|date('d M Y') }} <b>to</b> {{ item.closing_date|date('d M Y')  }}
+            </div>
+
+            <div class="clearfix"></div>
+            {{ item.description|raw }} 
+            <div class="clearfix"></div>
+
+            <div class="job-starting-date">
+                <b>Work Starting Date:</b> {{ item.start_date|date('d M Y') }} <b>to</b> {{ item.end_date|date('d M Y')  }}
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="job-small-info">
+                <span>
+                    <i class="fa fa-map-marker"></i> {{ item.country.name }} {{ item.city }} 
+                </span>
+                <span>
+                    <i class="fa fa-envelope"></i> {{ item.email }} 
+                </span>
+                <span>
+                    <i class="fa fa-location-arrow"></i> {{ item.address }} 
+                </span>
+                <span>
+                    <i class="fa fa-phone"></i> {{ item.phone }} 
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+        </div>
+    </div>
+
+    <div class="job-location-map">
+        <div class="clearfix"></div>
+        <div id="map-canvas"></div>
+    </div>
+    <br>
+    <br>
+</div>
+
+
+<div> 
+    <div class="clearfix"></div>
+    <div class="well well-sm">Other Job Listings In Same Category</div>
+    <div class="category-jobs-listing">
+        {% include "job.list.twig" ignore missing with {'category_id': item.category_id, 'action': 'latest'}  %}
+    </div>
+    <div class="clearfix"></div>
+    <br>
+</div>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM7aNBTgvwJyUwTqkbwAYa8mC7gZRItPs"></script>   
+
+
+<script>
+    function initialize() {
+        var marker;
+        var mapCanvas = document.getElementById('map-canvas');
+        var myLatlng = new google.maps.LatLng({{ item.latitude|default('-1.2833300') }}, {{ item.longitude|default('36.8166700') }});
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 6,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+
+        marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map
+        });
+
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>

@@ -1,0 +1,39 @@
+
+{{ set_assets('applications/Jobs/Addons/Category/assets/css/style.css') }}
+
+<div id="menu" class="block_job_category">
+    <div class="panel list-group">
+        {% if categories|length > 0 %}
+            {% for category in categories %}
+
+                {% if category.children|length > 0 %}
+                    {% set cat_link = '#' %}
+                {% else %}
+                    {% set cat_link = generate_url('jobs.jobs', {'category_id':category.id}) %}
+                {% endif %}
+
+                <a href="{{ cat_link }}" class="list-group-item" {% if category.children|length > 0 %}data-toggle="collapse" data-target="#sm{{ category.id }}" data-parent="#menu"  onclick="return false" {% endif %} title='{{ category.title }}'>
+                    <b> {{ category.title }} </b>
+                    {% if category.children|length > 0 %}
+                        <span class="label bg-light-blue pull-right">{{ category.children|length }}</span> 
+                    {% endif %}
+                    <span class="glyphicon glyphicon-chevron pull-right"></span>
+                </a>
+
+                {% if category.children|length > 0 %}
+                    <div id="sm{{ category.id }}" class="sublinks collapse {% if default_category_id == category.id %}in{% endif %}">
+                        {% for child in category.children %}
+                            {% set child_link = generate_url('jobs.jobs', {'category_id':child.id}) %}
+                            <a class="list-group-item small" href="{{ child_link }}" title='{{ child.title }}'>
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <b>{{ child.title }}</b>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+

@@ -1,0 +1,14 @@
+
+{% set job = get_context('job') %}
+
+<div class="form-group job_id-group">
+    <label for="job_id" class="col-sm-3 control-label">job_id</label>
+    <div class="col-sm-9  kazicode-form-field ">
+
+        <a href="{{ generate_url('jobs.jobs', null, 0, job)}}">
+            {{ job.title}} 
+        </a>
+
+        <input type = "hidden" name="form[job_id]" value="{{ job.id }}">
+    </div>
+</div>

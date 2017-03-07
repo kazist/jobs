@@ -1,0 +1,13 @@
+{
+    "name": "documents",
+    "title": "Jobs Candidates Documents",
+    "explanation": "Jobs Candidates Documents",
+    "description": "Jobs Candidates Documents",
+    "version": 17,
+    "has_view": "0",
+    "tie_field": "0",
+    "email_on_new": "0",
+    "email_on_edit": "0",
+    "email_on_delete": "0",
+    "date_file_modified": "2016-11-11 18:39:02"
+}

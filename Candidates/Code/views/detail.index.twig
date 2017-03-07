@@ -1,0 +1,119 @@
+{# empty Twig template #}
+{% import "form.macro.twig" as forms %}
+
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+<h1 class="component-header">{{ item.name }}</h1>
+
+{% if item.created_by == document.user.id %} 
+    {% include "payment.index.twig" ignore missing %} 
+{% endif %}
+
+<div class="job-posted-date">
+    <i class="fa fa-clock-o"></i> Posted:  {{ item.date_created|date('d M Y H:i') }} &nbsp;&nbsp;
+    <span class="{% if not item.available %}bg-red{% else %}bg-green{% endif %}">
+        {% if not item.available %}Not{% endif %} Available
+    </span>
+</div>
+
+{% set item_url = generate_url('jobs.candidates.detail', {'id':item.id})  %}
+
+<div class="single-candidate form-horizontal">
+
+    <div>
+
+        <div class="well well-sm">Personal Detail</div>
+        <div class="col-sm-4">
+            <img src="{{ resized_image(item.avatar_file,150,150) }}" alt="{{ item.name }}" title="{{ item.name }}">
+        </div>
+        <div class="col-sm-8">
+
+            {{ forms.input('name', 'text', item.name, 'Name',null, null, null, true) }}
+            {{ forms.input('dob', 'text', item.dob, 'Date of Birth',null, null, null, true) }}
+            {{ forms.input('phone', 'text', item.phone, 'Phone',null, null, null, true) }}
+            {{ forms.input('email', 'text', item.email, 'Email',null, null, null, true) }}
+            {{ forms.input('website', 'text', item.website, 'Website',null, null, null, true) }}
+            {{ forms.input('education', 'text', item.education, 'Education',null, null, null, true) }}
+            {{ forms.input('position', 'text', item.position, 'Position',null, null, null, true) }}
+
+            <a class="btn btn-success btn-flat"> Download Resume </a>
+            <a class="btn btn-default btn-flat" href='{{ generate_url('jobs.candidates.messages.add',{'candidate_id':item.id}) }}'> 
+                <i class='fa fa-arrow-right'></i>
+                Send Message 
+            </a>
+
+        </div>
+        <div class="clearfix"></div>
+        <br>
+    </div>
+
+    <div>
+        <div class="well well-sm">Profile </div>
+        {{ item.profile|raw }}
+        <br>
+        <br>
+    </div>
+
+    <div>
+        <div class="well well-sm">Document</div>
+        {% include "candidate.detail.documents.twig" ignore missing with {'candidate_id': item.id}  %}
+    </div>
+
+    <div>
+        <div class="well well-sm">Education</div>
+        {% include "candidate.detail.education.twig" ignore missing with {'candidate_id': item.id}  %}
+    </div>
+
+    <div>
+        <div class="well well-sm">Experience</div>
+        {% include "candidate.detail.experience.twig" ignore missing with {'candidate_id': item.id}  %}
+    </div>
+
+    <div>
+        <div class="well well-sm">Skills</div>
+        {% include "candidate.detail.skills.twig" ignore missing with {'candidate_id': item.id}  %}
+    </div>
+
+
+    <div>
+        <div class="well well-sm">Contact Detail</div>
+
+        <div class="job-location-map">
+            <div class="clearfix"></div>
+            <div id="map-canvas"></div>
+        </div>
+
+        <div>
+            <b>Location</b><br>
+            {{ item.country.name }}{{ item.location.name }}{{ item.city }}
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM7aNBTgvwJyUwTqkbwAYa8mC7gZRItPs"></script>   
+
+
+<script>
+    function initialize() {
+        var marker;
+        var mapCanvas = document.getElementById('map-canvas');
+        var myLatlng = new google.maps.LatLng({{ item.latitude|default('-1.2833300') }}, {{ item.longitude|default('36.8166700') }});
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 6,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+
+        marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map
+        });
+
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>

@@ -1,0 +1,10 @@
+{
+    "name": "latestjobs",
+    "title": "Latestjobs Listing",
+    "explanation": "Latestjobs Listing",
+    "description": "Latestjobs Listing",
+    "version": 1,
+    "icon": "assets\/jobs\/addons\/latestjobs\/icon.png",
+    "extension": "addon",
+    "path": "jobs\/addons\/latestjobs\/"
+}

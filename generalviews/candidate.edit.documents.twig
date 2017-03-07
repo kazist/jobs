@@ -1,0 +1,69 @@
+{# empty Twig template #}
+{% set params = { 'candidate_id': candidate_id} %}
+
+{{ set_assets('applications/Jobs/assets/js/candidate.js') }}
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+{% set documents = callFunction( "Jobs.Candidates.Code.Models.CandidatesModel", 'getDocuments', params ) %}
+
+
+<div class="candidate-documents-form">
+    <a class="btn btn-primary btn-xs btn-flat add-document-tr">
+        <i class="fa fa-plus"></i> Add File
+    </a>
+    <div class="clearfix"></div>
+
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>File</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% if documents|length > 0 %}
+                    {% for document in documents %}
+                        <tr>
+                            <td>
+                                <input type="text" name="form[document][exist][title][{{ document.id }}]" value="{{ document.document_title }}">
+                            </td>
+                            <td>
+                                <input type="hidden" name="form[document][exist][media_id][{{ document.id }}]" value="{{ document.document }}">
+                                {{ document.document_file|default('File Does Not Exist') }}
+                            </td>
+                            <td>
+                                <a class="btn btn-danger btn-xs btn-flat  delete-document-tr" document_id="{{ document.id }}" candidate_id="{{ candidate_id }}">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>
+                            <input type="text" name="form[document][new][title][]" value="">
+                        </td>
+                        <td>
+                            <input type="file" name="form[document][new][upload][]">
+                        </td>
+                        <td>
+                            <a class="btn btn-danger btn-xs btn-flat delete-document-tr">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <a class="btn btn-success btn-xs btn-flat save-profile">
+        <i class="fa fa-plus"></i> Save Changes
+    </a>
+    <br>
+    <br>
+</div>

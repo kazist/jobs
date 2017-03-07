@@ -1,0 +1,13 @@
+{
+    "name": "candidates",
+    "title": "Candidates List",
+    "explanation": "Candidates List",
+    "description": "Candidates List",
+    "version": 35,
+    "has_view": "1",
+    "tie_field": "0",
+    "email_on_new": "0",
+    "email_on_edit": "0",
+    "email_on_delete": "0",
+    "date_file_modified": "2016-11-11 18:38:54"
+}

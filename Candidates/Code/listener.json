@@ -1,0 +1,7 @@
+[{
+        "tracking_id": "1",
+        "class": "Jobs\\Candidates\\Code\\Listeners\\PaymentListener",
+        "title": "Candidites Payment Event Listener",
+        "description": "Listen For Candidites Payment Events"
+    }]
+

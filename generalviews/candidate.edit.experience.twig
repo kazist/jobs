@@ -1,0 +1,59 @@
+{# empty Twig template #}
+
+{% set params = { 'candidate_id': candidate_id} %}
+
+{{ set_assets('applications/Jobs/assets/js/job.js') }}
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+{% set experiences = callFunction( "Jobs.Candidates.Code.Models.CandidatesModel", 'getExperiences', params ) %}
+
+<a class="btn btn-primary btn-xs btn-flat pull-left add-experience" data-toggle="modal" data-target="#experienceModal">
+    <i class="fa fa-plus"></i> Add File
+</a>
+<br>
+<br>
+
+{% if experiences|length > 0 %}
+    <div class="single-candidate-experiences">
+        {% for experience in experiences %}
+
+            {% set experience_url = generate_url('jobs.candidates.deleteexperience', {'experience_id':experience.id, 'candidate_id=':candidate_id }) %}
+
+            <div class="single-candidate-experience">
+                <h3>
+                    {{ experience.title }}
+                    <a class="btn btn-primary btn-xs btn-flat edit-experience" data-toggle="modal" data-target="#experienceModal" title="Edit Experience">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a class="btn btn-danger btn-xs btn-flat delete-experience" href="{{ experience_url }}" title="Delete Experience">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </h3>
+                <div>
+                    <b> {{ experience.start_date|date('d M Y') }} - {{ experience.end_date|date('d M Y') }}</b>
+
+                    <span class="experience_id" experience_data="{{ experience.id }}"></span>
+                    <span class="title" experience_data="{{ experience.title }}"></span>
+                    <span class="description" experience_data="{{ experience.description }}"></span>
+                    <span class="company" experience_data="{{ experience.company }}"></span>
+                    <span class="location" experience_data="{{ experience.location }}"></span>
+                    <span class="position" experience_data="{{ experience.position }}"></span>
+                    <span class="start_date" experience_data="{{ experience.start_date }}"></span>
+                    <span class="end_date" experience_data="{{ experience.end_date }}"></span>
+
+                    <div>
+                        {{ experience.description }}
+                    </div>
+
+                    <div>
+                        <b>Company</b>{{ experience.company }} 
+                        <b>Position</b>{{ experience.position }}<br>
+                        <b>Location</b>{{ experience.location }}<br>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<br>
+<br>

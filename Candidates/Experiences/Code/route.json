@@ -1,0 +1,241 @@
+{
+    "frontend": [{
+            "title": "Experience List",
+            "description": "Management of Experiences.",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\ExperiencesController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "jobs.candidates.experiences",
+            "route": "jobs/candidates/experiences",
+            "arguments": "",
+            "keywords": "experience, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Experience ",
+            "description": "Add Experience .",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\ExperiencesController::addAction",
+            "unique_name": "jobs.candidates.experiences.add",
+            "route": "jobs/candidates/experiences/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "experience, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"],
+                "MODERATOR": ["can_add"],
+                "USER": ["can_add"]
+            }
+        }, {
+            "title": "Edit Experience {{ item.name }}",
+            "description": "Edit Experience {{ item.name }}.",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\ExperiencesController::editAction",
+            "unique_name": "jobs.candidates.experiences.edit",
+            "route": "jobs/candidates/experiences/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "experience, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }, {
+            "title": "Experience Detail: {{ item.name }}",
+            "description": "Experience Detail: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\ExperiencesController::detailAction",
+            "unique_name": "jobs.candidates.experiences.detail",
+            "route": "jobs/candidates/experiences/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "experience, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Experience Delete: {{ item.name }}",
+            "description": "Experience Delete: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\ExperiencesController::deleteAction",
+            "unique_name": "admin.jobs.candidates.experiences.delete",
+            "route": "admin/jobs/candidates/experiences/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "experience, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"],
+                "MODERATOR": ["can_delete", "can_deleteown"],
+                "USER": ["can_deleteown"]
+            }
+        }, {
+            "title": "Experience Save: {{ item.name }}",
+            "description": "Experience Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\ExperiencesController::saveAction",
+            "unique_name": "admin.jobs.candidates.experiences.save",
+            "route": "admin/jobs/candidates/experiences/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "experience, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }]
+    ,
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\Admin\\ExperiencesController::taskAction",
+            "unique_name": "admin.jobs.candidates.experiences.task",
+            "route": "admin/jobs/candidates/experiences/task",
+            "permissions": "can_write",
+            "arguments": "",
+            "keywords": "candidate, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_write"],
+                "ADMIN": ["can_write"]
+            }
+        }, {
+            "title": "Experience List",
+            "description": "Management of Experiences.",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\Admin\\ExperiencesController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.jobs.candidates.experiences",
+            "route": "admin/jobs/candidates/experiences",
+            "arguments": "",
+            "keywords": "experience, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Experience ",
+            "description": "Add Experience .",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\Admin\\ExperiencesController::addAction",
+            "unique_name": "admin.jobs.candidates.experiences.add",
+            "route": "admin/jobs/candidates/experiences/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "experience, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"]
+            }
+        }, {
+            "title": "Edit Experience {{ item.name }}",
+            "description": "Edit Experience {{ item.name }}.",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\Admin\\ExperiencesController::editAction",
+            "unique_name": "admin.jobs.candidates.experiences.edit",
+            "route": "admin/jobs/candidates/experiences/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "experience, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Experience Detail: {{ item.name }}",
+            "description": "Experience Detail: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\Admin\\ExperiencesController::detailAction",
+            "unique_name": "admin.jobs.candidates.experiences.detail",
+            "route": "admin/jobs/candidates/experiences/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "experience, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Experience Delete: {{ item.name }}",
+            "description": "Experience Delete: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\Admin\\ExperiencesController::deleteAction",
+            "unique_name": "admin.jobs.candidates.experiences.delete",
+            "route": "admin/jobs/candidates/experiences/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "experience, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Experience Save: {{ item.name }}",
+            "description": "Experience Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Experiences\\Code\\Controllers\\Admin\\ExperiencesController::saveAction",
+            "unique_name": "admin.jobs.candidates.experiences.save",
+            "route": "admin/jobs/candidates/experiences/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "experience, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

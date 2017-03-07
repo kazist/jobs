@@ -1,0 +1,64 @@
+Jobs\Jobs\Applications\Code\Tables\Applications:
+  table: jobs_jobs_applications
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    job_id:
+      name: job_id
+      type: integer
+      length: 11
+      nullable: false
+    subject:
+      name: subject
+      type: string
+      length: 255
+      nullable: false
+    message:
+      name: message
+      type: text
+      nullable: false
+    phone:
+      name: phone
+      type: string
+      length: 255
+      nullable: true
+    email:
+      name: email
+      type: string
+      length: 255
+      nullable: true
+    created_by:
+      name: created_by
+      type: integer
+      length: 11
+      nullable: false
+    date_created:
+      name: date_created
+      type: datetime
+      nullable: false
+    modified_by:
+      name: modified_by
+      type: integer
+      length: 11
+      nullable: false
+    date_modified:
+      name: date_modified
+      type: datetime
+      nullable: false
+  indexes:
+    job_id_index:
+      columns: [job_id]
+    created_by_index:
+      columns: [created_by]
+    modified_by_index:
+      columns: [modified_by]
+  lifecycleCallbacks:
+    prePersist:
+      - onPrePersist
+      - onPrePersistCallbacks
+    preUpdate:
+      - onPreUpdate
+      - onPreUpdateCallbacks

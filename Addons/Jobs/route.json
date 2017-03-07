@@ -1,0 +1,21 @@
+{
+    "frontend": [{
+            "title": "Jobs List",
+            "description": "Latest Jobs.",
+            "controller": "Jobs\\Addons\\Jobs\\Controllers\\JobsController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "jobs.addons.jobs",
+            "route": "jobs/addons/jobs",
+            "arguments": "",
+            "keywords": "latest, jobs, list, jobs",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }]
+} 	

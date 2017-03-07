@@ -1,0 +1,117 @@
+
+{{ set_assets('applications/Jobs/assets/css/job.css') }}
+
+<script>
+    var package_prices = {{ packages|json_encode()|raw }};</script>
+
+<style>
+
+    #form_jobs_jobs h4{
+        background:#EEEEEE;
+        text-align: center;
+        padding:5px;
+
+    }
+
+    .form-field-group{
+        clear:both;
+    }
+
+    .form-field-group .form-group{
+        width: 49%;
+        float:left;
+    }
+    
+   .job_detail-field-group .form-group:nth-child(even){
+        float:right;
+    }
+    
+    .plicing_-field-group .form-group:nth-child(odd){
+        float:right;
+    }
+
+    .dates_detail-field-group .form-group:nth-child(odd){
+        float:right;
+    }
+    
+    .contact-field-group .form-group:nth-child(even){
+        float:right;
+    }
+    
+    .location-field-group .form-group:nth-child(even){
+        float:right;
+    }
+    
+    .form-field-group .description-group{
+        width: 100%;
+    }
+
+    .form-group .col-sm-3{
+        width: 100%;
+        text-align: left !important;
+    }
+
+    .form-group .col-sm-9{
+        width: 100%;
+    }
+
+</style>
+
+<script>
+
+
+            jQuery(document).ready(function () {
+
+        changePricing(jQuery('#package_id').val());
+
+        jQuery('#package_id').change(function () {
+            changePricing(jQuery('#package_id').val());
+            jQuery('.advert-package-selection').html(jQuery("#package_id option:selected").text());
+        });
+
+        jQuery('#package_price_id').change(function () {
+            jQuery('.advert-package_price-selection').html(jQuery("#package_price_id option:selected").text());
+        });
+    });
+
+    function changePricing(package_id) {
+
+        jQuery('.currency_id-group').hide();
+        jQuery('.price-group').hide();
+        jQuery('.discounted_price-group').hide();
+        jQuery('.sale_end_date-group').hide();
+        jQuery('.sale_start_date-group').hide();
+
+        if (package_id) {
+
+            var has_currency = package_prices[package_id]['has_currency'];
+            var has_price = package_prices[package_id]['has_price'];
+            var has_discount = package_prices[package_id]['has_discount'];
+            var prices = package_prices[package_id]['prices'];
+
+            if (has_currency) {
+                jQuery('.currency_id-group').show();
+            }
+
+            if (has_price) {
+                jQuery('.price-group').show();
+            }
+
+            if (has_discount) {
+                jQuery('.discounted_price-group').show();
+                jQuery('.sale_end_date-group').show();
+                jQuery('.sale_start_date-group').show();
+            }
+
+            var html = '<option value="">Select Package Prices</option>';
+
+            jQuery.each(prices, function (index, price) {
+                html += '<option value="' + price['id'] + '">$' + price['price'] + ' For ' + price['no_of_days'] + ' Days</option>';
+            });
+
+            jQuery('#package_price_id').html(html);
+
+        }
+    }
+
+</script>

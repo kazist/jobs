@@ -1,0 +1,10 @@
+{
+    "name": "category",
+    "title": "Category Listing",
+    "explanation": "Category Listing",
+    "description": "Category Listing",
+    "version": 1,
+    "icon": "assets\/jobs\/addons\/category\/icon.png",
+    "extension": "addon",
+    "path": "jobs\/addons\/category\/"
+}

@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 29, 2015, 4:22:26 PM
+    Author     : sbc
+*/
+
+.block_job_category .list-group a{
+    font-size:16px;
+}
+
+.block_job_category .list-group a:hover, .block_job_category .list-group a:focus{
+    background: #F15D22;
+    color:white;
+    transition: background .2s ease-out;
+}
+
+.block_job_category .list-group .sublinks{
+    padding:5px 0;
+    background: #F9F9F9;
+    border: 1px solid #ddd;
+}
+
+.block_job_category .list-group .sublinks .list-group-item span {
+    font-size: 10px;
+}
+
+.block_job_category .list-group .sublinks .list-group-item {
+    background: transparent;
+    font-size: 14px;
+    font-weight: normal;
+    margin:0 10px;
+    padding:5px 20px;
+    border-radius: 0;
+    border:0;
+    border-bottom:1px dotted #ddd;
+}
+
+.block_job_category .list-group .sublinks .list-group-item:hover{
+    color: #333;
+}
+
+
+

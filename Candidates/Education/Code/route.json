@@ -1,0 +1,241 @@
+{
+    "frontend": [{
+            "title": "Education List",
+            "description": "Management of Education.",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\EducationController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "jobs.candidates.education",
+            "route": "jobs/candidates/education",
+            "arguments": "",
+            "keywords": "education, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Education  ",
+            "description": "Add Education .",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\EducationController::addAction",
+            "unique_name": "jobs.candidates.education.add",
+            "route": "jobs/candidates/education/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "education, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"],
+                "MODERATOR": ["can_add"],
+                "USER": ["can_add"]
+            }
+        }, {
+            "title": "Edit Education {{ item.name }}",
+            "description": "Edit Education {{ item.name }}.",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\EducationController::editAction",
+            "unique_name": "jobs.candidates.education.edit",
+            "route": "jobs/candidates/education/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "education, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }, {
+            "title": "Education Detail: {{ item.name }}",
+            "description": "Education Detail: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\EducationController::detailAction",
+            "unique_name": "jobs.candidates.education.detail",
+            "route": "jobs/candidates/education/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "education, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Education Delete: {{ item.name }}",
+            "description": "Education Delete: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\EducationController::deleteAction",
+            "unique_name": "admin.jobs.candidates.education.delete",
+            "route": "admin/jobs/candidates/education/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "education, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"],
+                "MODERATOR": ["can_delete", "can_deleteown"],
+                "USER": ["can_deleteown"]
+            }
+        }, {
+            "title": "Education Save: {{ item.name }}",
+            "description": "Education Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\EducationController::saveAction",
+            "unique_name": "admin.jobs.candidates.education.save",
+            "route": "admin/jobs/candidates/education/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "education, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_writeown"]
+            }
+        }]
+    ,
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\Admin\\EducationController::taskAction",
+            "unique_name": "admin.jobs.candidates.education.task",
+            "route": "admin/jobs/candidates/education/task",
+            "permissions": "can_write",
+            "arguments": "",
+            "keywords": "education, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_write"],
+                "ADMIN": ["can_write"]
+            }
+        }, {
+            "title": "Education List",
+            "description": "Management of Education.",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\Admin\\EducationController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.jobs.candidates.education",
+            "route": "admin/jobs/candidates/education",
+            "arguments": "",
+            "keywords": "education, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Education ",
+            "description": "Add Education .",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\Admin\\EducationController::addAction",
+            "unique_name": "admin.jobs.candidates.education.add",
+            "route": "admin/jobs/candidates/education/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "education, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"]
+            }
+        }, {
+            "title": "Edit Education {{ item.name }}",
+            "description": "Edit Education {{ item.name }}.",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\Admin\\EducationController::editAction",
+            "unique_name": "admin.jobs.candidates.education.edit",
+            "route": "admin/jobs/candidates/education/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "education, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Education Detail: {{ item.name }}",
+            "description": "Education Detail: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\Admin\\EducationController::detailAction",
+            "unique_name": "admin.jobs.candidates.education.detail",
+            "route": "admin/jobs/candidates/education/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "education, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Education Delete: {{ item.name }}",
+            "description": "Education Delete: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\Admin\\EducationController::deleteAction",
+            "unique_name": "admin.jobs.candidates.education.delete",
+            "route": "admin/jobs/candidates/education/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "education, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Education Save: {{ item.name }}",
+            "description": "Education Save: {{ item.name }}",
+            "controller": "Jobs\\Candidates\\Education\\Code\\Controllers\\Admin\\EducationController::saveAction",
+            "unique_name": "admin.jobs.candidates.education.save",
+            "route": "admin/jobs/candidates/education/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "education, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

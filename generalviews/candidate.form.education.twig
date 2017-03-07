@@ -1,0 +1,49 @@
+{# empty Twig template #}
+
+
+<div id="educationModal" class="candidate-education-form modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="main-edit-form" action="{{ generate_url('jobs.candidates.saveeducation') }}" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add/Edit Education</h4>
+                </div>
+                <div class="modal-body">
+
+                    {{ forms.input('education.id', 'hidden', null, 'Id') }}
+                    {{ forms.input('education.candidate_id', 'hidden', item.id) }}
+                    {{ forms.input('education.institution', 'text', null, 'Institution') }}
+                    {{ forms.input('education.certification_id', 'select', item.certification_id, 'Certification', null, null, null, null, certifications) }}
+                    {{ forms.input('education.field_of_study', 'text', null, 'Field of Study') }}
+                    {{ forms.input('education.grade', 'text', null, 'Grade') }}
+                    {{ forms.input('education.activities', 'text', null, 'Activities') }}
+                    {{ forms.input('education.description', 'textarea', null, 'Description') }}
+
+                    <div class="form-group institution-group">
+                        <label for="institution" class="col-sm-3 control-label">Start/End Date</label>
+                        <div class="col-sm-9 kazicode-form-field">
+                            <div class="job-publish-up">
+                                {{ forms.input('education.start_date', 'date',  null) }}
+                            </div>
+                            <div class="job-publish-connector">
+                                To
+                            </div>
+                            <div class="job-publish-down">
+                                {{ forms.input('education.end_date', 'date',  null) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-success btn-sm btn-flat" type="submit" value="Save Changes" >
+
+                    <button  class="btn btn-danger btn-sm btn-flat" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+                {{ forms.input('_token' ) }} 
+
+            </form>
+        </div>
+    </div>
+</div>        

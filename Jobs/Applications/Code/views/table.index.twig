@@ -1,0 +1,74 @@
+{# empty Twig template #}
+
+{{ set_assets('applications/Marketplace/assets/css/marketplace.css') }}
+
+{% set params = {'view':'mylisting'} %}
+
+<form action="{{ generate_url('jobs.jobs.applications', params) }}" method="POST">
+
+    <h1 class="component-header">Applications</h1>
+
+    <div class="clr"></div>
+    <br>
+
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th align="left">Subject</th>
+                    <th align="left">Job</th>
+                    <th align="left">Phone</th>
+                    <th align="left">Email</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead> 
+            <tbody>
+                {% if items|length > 0 %}
+                    {% for key,item in items %}
+
+                        {% set item_url = generate_url('jobs.jobs.applications.detail', null, 0, item) %}
+
+                        <tr>
+                            <td>{{ item.subject }}</td>
+                            <td>{{ item.job_id_title }}</td>
+                            <td>{{ item.phone}}</td>
+                            <td>{{ item.email }}</td>
+                            <td>
+                                <a class="btn btn-default btn-xs" href="{{ generate_url('jobs.jobs.applications.detail',{'id':item.id}) }}">
+                                    <i class="fa fa-pencil"></i>
+                                    View Detail
+                                </a>
+                            </td>
+                        <tr>
+
+                        {% endfor %}
+                    {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix"></div>
+
+    {% include "items.pagination.twig"%}
+
+    <div class="clearfix"></div>
+
+    {{ forms.input('_token' ) }} 
+
+</form>
+
+
+
+<style>
+    .vehicle{
+        border: 1px solid #EFEFEF;
+        margin-bottom:15px;
+        background:white;
+    }
+    .vehicle img{
+        border: 1px solid #EFEFEF;
+        margin:5px;
+    }
+</style>
+
+
