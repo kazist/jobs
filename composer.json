@@ -1,0 +1,15 @@
+{
+    "name": "kazist/jobs",
+    "description": "Kazist Jobs Manager.",
+    "keywords": ["kazist", "job manager"],
+    "homepage": "https://github.com/kazist/jobs",
+    "license": "LGPL-3.0",
+    "authors": [
+        {
+            "name": "Dedan Irungu",
+            "email": "info@emshyinnovate.com",
+            "homepage": "http://emshyinnovate.com",
+            "role": "Founder & Developer"
+        }
+    ]
+}
