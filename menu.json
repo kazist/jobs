@@ -2,38 +2,44 @@
     "title": "Jobs",
     "description": "Jobs Advertisement",
     "alias": "jobs",
-    "icon": "fa-picture-o",
+    "icon": "fa fa-graduation-cap",
     "home_link": "jobs\/jobs",
     "is_core": "1",
     "menulist": [{
             "title": "Jobs",
             "alias": "admin_jobs_jobs",
             "url": "admin/jobs/jobs",
+            "icon": "fa fa-wrench",
             "children": []
         }, {
             "title": "Candidates",
             "alias": "admin_jobs_candidates",
             "url": "admin/jobs/candidates",
+            "icon": "fa fa-graduation-cap",
             "children": []
         }, {
             "title": "Categories",
             "alias": "admin_jobs_categories",
             "url": "admin/jobs/categories",
+            "icon": "fa fa-navicon",
             "children": []
         }, {
             "title": "Certifications",
             "alias": "admin_jobs_certifications",
             "url": "admin/jobs/certifications",
+            "icon": "fa fa-university",
             "children": []
         }, {
             "title": "Packages",
             "alias": "admin_jobs_packages",
             "url": "admin/jobs/packages",
+            "icon": "fa fa-archive",
             "children": []
         }, {
             "title": "Skills",
             "alias": "admin_jobs_skills",
             "url": "admin/jobs/skills",
+            "icon": "fa fa-wrench",
             "children": []
         }]
 }
