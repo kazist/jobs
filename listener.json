@@ -1,5 +1,10 @@
 [{
         "tracking_id": "1",
+        "class": "Jobs\\Jobs\\Code\\Listeners\\PaymentListener",
+        "title": "Jobs Payment Event Listener",
+        "description": "Listen For Jobs Payment Events"
+    }, {
+        "tracking_id": "2",
         "class": "Jobs\\Candidates\\Code\\Listeners\\PaymentListener",
         "title": "Candidites Payment Event Listener",
         "description": "Listen For Candidites Payment Events"

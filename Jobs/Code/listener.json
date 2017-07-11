@@ -1,7 +1,0 @@
-[{
-        "tracking_id": "1",
-        "class": "Jobs\\Jobs\\Code\\Listeners\\PaymentListener",
-        "title": "Jobs Payment Event Listener",
-        "description": "Listen For Jobs Payment Events"
-    }]
-
