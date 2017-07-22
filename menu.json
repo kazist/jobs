@@ -4,6 +4,7 @@
     "alias": "jobs",
     "icon": "fa fa-graduation-cap",
     "home_link": "jobs\/jobs",
+    "path": "applications/Jobs",
     "is_core": "1",
     "menulist": [{
             "title": "Jobs",
